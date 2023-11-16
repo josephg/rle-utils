@@ -150,3 +150,28 @@ export function nextKey<T>(list: T[], m: Keyed<T>): number {
     : m.keyEnd(list[list.length - 1])
 }
 
+
+// export type Cursor = {
+//   idx: number,
+//   offset
+// }
+
+// /**
+//  * This is a pretty complex function which mutates the items within a range in the list via a visitor.
+//  *
+//  * The visitor function modifies the passed item in-place. It returns true if we should keep searching, or false
+//  * if we're done.
+//  */
+// export function mutateRange<T>(list: T[], m: SplitMethods<T> & MergeMethods<T>, startIdx: number, startOffset: number, visitor: (item: T) => boolean) {
+//   for (let i = startIdx; i < list.length; i++) {
+//     let item = list[i]
+//     let needsInsert = false
+//     if (startOffset > 0) {
+//       item = cloneItem(item, m)
+//       needsInsert = true
+//       m.truncateKeepingLeft(list[i], startOffset)
+//     }
+
+
+//   }
+// }
