@@ -38,7 +38,7 @@ export const simpleKeyedSpanMethods: AllRLEMethods<SimpleKeyedRLESpan<any>> = {
 }
 
 
-// Only for testing. Taken from rust code.
+// Taken from the diamond-types rust code.
 export function testRLEMethods<T>(entry: T, m: AllRLEMethods<T>) {
   const len = itemLen(entry, m)
   assert(len >= 2, "Call this with a larger entry");
@@ -73,4 +73,14 @@ export function testRLEMethods<T>(entry: T, m: AllRLEMethods<T>) {
       // assert.equal(end2, end)
       // assert.equal(start2, start)
     }
+}
+
+export const assertRLEPacked = <T extends Record<string, any>>(entries: T[], m: MergeMethods<T>) => {
+  for (let i = 1; i < entries.length; i++) {
+    // Clone the entry so we don't modify the causal graph in the process.
+    let prev: T = {...entries[i - 1]}
+
+    // tryAppend should return false every time.
+    assert.equal(m.tryAppend(prev, entries[i]), false)
+  }
 }
