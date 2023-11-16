@@ -1,0 +1,28 @@
+{
+  "name": "rle-utils",
+  "version": "0.1.0",
+  "description": "Simple utilities for inline run-length encoding",
+  "types": "dist/src/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": "./dist/src/index.js",
+    "./testhelpers": "./dist/src/testhelpers.js"
+  },
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rle"
+  ],
+  "author": "Seph Gentle <me@josephg.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "typescript": "^5.2.2"
+  },
+  "sideEffects": false
+}
