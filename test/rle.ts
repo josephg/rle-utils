@@ -1,13 +1,14 @@
 import assert from 'node:assert/strict'
 import { rleIterRange, rlePush } from '../src/rlelist.js';
-import { SimpleKeyedRLESpan, simpleKeyedSpanMethods, testRLEMethods } from '../src/testhelpers.js'
+import { testRLEMethods } from '../src/testhelpers.js'
+import { SimpleKeyedSpan, simpleKeyedSpanMethods } from '../src/simple.js';
 
 
 // testRLEMethods({ length: 10, val: 'hi' }, simpleRLESpanMethods)
 testRLEMethods({ length: 10, val: 'hi', key: 100 }, simpleKeyedSpanMethods)
 
 {
-  const list: SimpleKeyedRLESpan<string>[] = []
+  const list: SimpleKeyedSpan<string>[] = []
   rlePush(list, simpleKeyedSpanMethods, {key: 10, length: 2, val: 'a'})
   rlePush(list, simpleKeyedSpanMethods, {key: 12, length: 2, val: 'a'})
   assert(list.length === 1)
@@ -15,7 +16,7 @@ testRLEMethods({ length: 10, val: 'hi', key: 100 }, simpleKeyedSpanMethods)
 }
 
 {
-  const list: SimpleKeyedRLESpan<string>[] = []
+  const list: SimpleKeyedSpan<string>[] = []
 
   const empty = [...rleIterRange(list, simpleKeyedSpanMethods, 11, 13)]
   assert(empty.length === 0)
